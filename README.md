@@ -12,3 +12,5 @@ JP1 is a standard 2.54mm screw terminal block. J2 is 2.54mm pins.
 R1 and R2 are 4.7k ohm resistors.
 
 ![schematic](https://github.com/chrissavage2300/Thermocouple-Test-Board/assets/24416184/8acd59b6-994e-437b-89c1-85277e2db2ee)
+
+![Board](https://github.com/chrissavage2300/Thermocouple-Test-Board/blob/main/board.png?raw=true)
