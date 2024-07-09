@@ -18,6 +18,8 @@ After that, we convert the temperature reading of the MCP9801 to a voltage. We d
 
 In testing Ive found it to be within +/-1C°. I could max out the PGA and use 8x mode, but 4x gives me roughly 1.5 codes per degree C. I tested this circuit both at boiling water (as close as I can get it) and freezing water. Freezing water is easy, I used an insulated bottle and tried to crush up ice as best as I can. Boiling water is a bit different as I had to move my kettle into the same room, and it doesnt stay boiling either, so measurements had to be quick. 
 
+This code is currently being tested on a dspic33. Anything that has I2C will work, as long as you have a library to do so. 
+
 ![schematic](https://github.com/chrissavage2300/Thermocouple-Test-Board/assets/24416184/8acd59b6-994e-437b-89c1-85277e2db2ee)
 
 ![Board](https://github.com/chrissavage2300/Thermocouple-Test-Board/blob/main/board.png?raw=true)
