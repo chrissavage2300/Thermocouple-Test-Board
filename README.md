@@ -12,6 +12,8 @@ Uses both the MCP9801 and MCP3425 onboard temperature sensor and 16 bit ADC to r
 * R1 and R2 are 4.7k ohm resistors.
 
   ## The Code
+  ![ExampleCircuit](https://github.com/chrissavage2300/Thermocouple-Test-Board/assets/24416184/49aca6b6-4118-47a3-8593-96b55f836f41)
+
 Rather than using a dedicated Thermocouple IC to read a thermocouple, we can just use a sensitive ADC to read it. K type thermocouples have a signal of 40uV/C, which is pretty small. So we have to amplify it using a PGA. We also need a high resolution ADC. Ive found that 16 to 18 bits should give enough resolution and I only need it to be within 1 degree C or better. The algorithm works by first setting the PGA to 4x, then using the full 16 bits of the ADC. We then use some floating point math to get our voltage of the thermocouple. 
 
 After that, we convert the temperature reading of the MCP9801 to a voltage. We dont add the temperatures together, rather, we add the voltages. Once the two voltages are added, then we shove it into the thermocouple formula to get our temperature. 
