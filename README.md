@@ -28,10 +28,23 @@ This code is currently being tested on a dspic33. Anything that has I2C will wor
 Some of this was taken from the datasheet of a similar ADC. We are basically using a 16 bit ADC, set for max resolution. I initially had selected a PGA of 8 but decided that I dont need that much accuracy.
 If you need that much accuracy, you can re-do the math to figure out your code value. Based on these formula's above, for the temperature I will be using, my max code that I will recieve is 640 (base 10). 
 
-Once you follow the main formula, you are now reading voltage and can use it how ever you would like. For this application, the final result is in uV * 100, ie a voltage of 40uV will be read as 400. Next the cold temperature from the MCP9800 needs to be converted into a voltage. I used a linearized formula for that, that I found using Libre Office. The truincated formula is basically "Temperature*4". The exact formula is:
+Once you follow the main formula, you are now reading voltage and can use it how ever you would like. For this application, the final result is in uV * 100, ie a voltage of 40uV will be read as 400. Next the cold temperature from the MCP9800 needs to be converted into a voltage. I used a linearized formula for that, that I found using Libre Office. The truncated  formula is basically "Temperature*4" so we use integers only. The exact formula is:
 ![image](https://github.com/user-attachments/assets/96f0d731-762b-40c2-9d39-2cdfe5d9860e)
 
 Note that I multiply by 0.01. This is so we dont have to divide by 100.
+
+Then we perform an addition on the two values:
+![image](https://github.com/user-attachments/assets/6383d8dc-bfcc-425d-bc51-25958fc83d19)
+
+Now we can finally use this voltage in the polynomial formula given by NIST to figure out our temp. In my case though, I used a linearized formula, since K thermocouples are mostly linear. I also used a short version due to using integers:
+![image](https://github.com/user-attachments/assets/64b7329f-039c-4a0b-9935-9d3be59c85f2)
+
+This is the exact linearized formula. Its within a degree or two.
+
+![image](https://github.com/user-attachments/assets/f3600287-cc5d-4225-aabf-61a3b4071f50)
+
+This is the integer formula I used to do most of the math. In testing, its also accurate to within a degree or two, which is fine. My final system can only change that much. As far as the code goes, you now have your final temp, however, I did perform a division by 10000 after this because the number is too big to be used. 
+
 
 ## Schematic
 ![schematic](https://github.com/chrissavage2300/Thermocouple-Test-Board/assets/24416184/8acd59b6-994e-437b-89c1-85277e2db2ee)
