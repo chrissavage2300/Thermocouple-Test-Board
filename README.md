@@ -29,6 +29,7 @@ Some of this was taken from the datasheet of a similar ADC. We are basically usi
 If you need that much accuracy, you can re-do the math to figure out your code value. Based on these formula's above, for the temperature I will be using, my max code that I will recieve is 640 (base 10). 
 
 Once you follow the main formula, you are now reading voltage and can use it how ever you would like. For this application, the final result is in uV * 100, ie a voltage of 40uV will be read as 400. Next the cold temperature from the MCP9800 needs to be converted into a voltage. I used a linearized formula for that, that I found using Libre Office. The truncated  formula is basically "Temperature*4" so we use integers only. The exact formula is:
+
 ![image](https://github.com/user-attachments/assets/96f0d731-762b-40c2-9d39-2cdfe5d9860e)
 
 Note that I multiply by 0.01. This is so we dont have to divide by 100.
