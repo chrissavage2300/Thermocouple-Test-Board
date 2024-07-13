@@ -24,8 +24,14 @@ This code is currently being tested on a dspic33. Anything that has I2C will wor
 
 ## Math
 ![Math](https://github.com/user-attachments/assets/36124b59-55a0-411d-a79e-8d0891d484df)
+
 Some of this was taken from the datasheet of a similar ADC. We are basically using a 16 bit ADC, set for max resolution. I initially had selected a PGA of 8 but decided that I dont need that much accuracy.
 If you need that much accuracy, you can re-do the math to figure out your code value. Based on these formula's above, for the temperature I will be using, my max code that I will recieve is 640 (base 10). 
+
+Once you follow the main formula, you are now reading voltage and can use it how ever you would like. For this application, the final result is in uV * 100, ie a voltage of 40uV will be read as 400. Next the cold temperature from the MCP9800 needs to be converted into a voltage. I used a linearized formula for that, that I found using Libre Office. The truincated formula is basically "Temperature*4". The exact formula is:
+![image](https://github.com/user-attachments/assets/96f0d731-762b-40c2-9d39-2cdfe5d9860e)
+
+Note that I multiply by 0.01. This is so we dont have to divide by 100.
 
 ## Schematic
 ![schematic](https://github.com/chrissavage2300/Thermocouple-Test-Board/assets/24416184/8acd59b6-994e-437b-89c1-85277e2db2ee)
