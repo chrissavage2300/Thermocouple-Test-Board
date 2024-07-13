@@ -22,6 +22,9 @@ In testing Ive found it to be within +/-1C°. I could max out the PGA and use 8x
 
 This code is currently being tested on a dspic33. Anything that has I2C will work, as long as you have a library to do so. 
 
+#Math
+
+## Schematic
 ![schematic](https://github.com/chrissavage2300/Thermocouple-Test-Board/assets/24416184/8acd59b6-994e-437b-89c1-85277e2db2ee)
 
 ![Board](https://github.com/chrissavage2300/Thermocouple-Test-Board/blob/main/board.png?raw=true)
